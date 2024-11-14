@@ -19,7 +19,7 @@ const workSans = Work_Sans({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://tulaganov-blog.vercel.app'),
+  metadataBase: new URL('https://www.tulaganov-blog.uz'),
   title: 'Tulaganov | Blog',
   description:
     'Programming news, tips and the latest programming news. You can find a guide to learning and developing programming on our blog.',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     description:
       'Programming news, tips and the latest programming news. You can find a guide to learning and developing programming on our blog.',
     type: 'website',
-    url: 'https://tulaganov-blog.vercel.app',
+    url: 'https://www.tulaganov-blog.uz',
     locale: 'en-US',
     countryName: 'Uzbekustan',
     siteName: 'Tulaganov | Blog',
@@ -53,7 +53,7 @@ export default function RootLayout({ children }: Readonly<ChildProps>) {
         >
           <NextTopLoader showSpinner={false} />
           {children}
-          <Toaster />
+          <Toaster position='bottom-center' />
         </ThemeProvider>
       </body>
     </html>

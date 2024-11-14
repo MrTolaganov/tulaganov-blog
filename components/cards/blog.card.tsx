@@ -38,7 +38,7 @@ function BlogCard(blog: Props) {
           <Minus />
           <div className='flex items-center gap-2'>
             <Clock className='w-5 h-5' />
-            <p>{getReadingTime(content.html)} min read</p>
+            <p>{getReadingTime(content.html)} mins read</p>
           </div>
         </div>
         <Link

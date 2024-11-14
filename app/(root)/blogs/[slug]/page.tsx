@@ -8,22 +8,18 @@ import { format } from 'date-fns'
 import ShareBtns from '../../components/share-btns'
 
 export async function generateMetadata(props: { params: Promise<{ slug: string }> }) {
-  const params = await props.params;
+  const params = await props.params
 
-  const {
-    slug
-  } = params;
+  const { slug } = params
 
   const { title, description, image } = await getDetailedBlog(slug)
   return { title, description, openGraph: { title, description, images: image.url } }
 }
 
 export default async function Page(props: { params: Promise<{ slug: string }> }) {
-  const params = await props.params;
+  const params = await props.params
 
-  const {
-    slug
-  } = params;
+  const { slug } = params
 
   const blog = await getDetailedBlog(slug)
 
@@ -46,7 +42,7 @@ export default async function Page(props: { params: Promise<{ slug: string }> })
         <Minus />
         <div className='flex items-center gap-2'>
           <Clock className='w-5 h-5' />
-          <p>{getReadingTime(content.html)}</p>
+          <p>{getReadingTime(content.html)} mins read</p>
         </div>
         <Minus />
         <div className='flex items-center gap-2'>
@@ -74,8 +70,8 @@ export default async function Page(props: { params: Promise<{ slug: string }> })
 
       <div className='flex mt-6 gap-6 items-center max-md:flex-col'>
         <Image
-          src={'/authors/otabek.png'}
-          alt='Otabek'
+          src={author.image.url}
+          alt={author.name}
           width='155'
           height='155'
           className='rounded-md max-md:self-start'
