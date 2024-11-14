@@ -1,14 +1,13 @@
 import BlogCard from '@/components/cards/blog.card'
 import { getAuthorById } from '@/services/author.service'
-import { ParamsIdAndSlugProps } from '@/types'
 import Image from 'next/image'
 
-export async function generateMetadata({ params: { id } }: ParamsIdAndSlugProps) {
+export async function generateMetadata({ params: { id } }: { params: { id: string } }) {
   const author = await getAuthorById(id)
   return { title: author.name }
 }
 
-export default async function Page({ params: { id } }: ParamsIdAndSlugProps) {
+export default async function Page({ params: { id } }: { params: { id: string } }) {
   const author = await getAuthorById(id)
 
   return (

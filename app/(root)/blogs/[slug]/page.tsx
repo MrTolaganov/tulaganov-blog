@@ -5,15 +5,14 @@ import Link from 'next/link'
 import { getDetailedBlog } from '@/services/blog.service'
 import { getReadingTime } from '@/lib/utils'
 import { format } from 'date-fns'
-import { ParamsIdAndSlugProps } from '@/types'
 import ShareBtns from '../../components/share-btns'
 
-export async function generateMetadata({ params: { slug } }: ParamsIdAndSlugProps) {
+export async function generateMetadata({ params: { slug } }: { params: { slug: string } }) {
   const { title, description, image } = await getDetailedBlog(slug)
   return { title, description, openGraph: { title, description, images: image.url } }
 }
 
-export default async function Page({ params: { slug } }: ParamsIdAndSlugProps) {
+export default async function Page({ params: { slug } }: { params: { slug: string } }) {
   const blog = await getDetailedBlog(slug)
 
   const { title, description, image, content, author, createdAt } = blog

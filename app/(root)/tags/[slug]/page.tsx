@@ -1,15 +1,14 @@
 import BlogCard from '@/components/cards/blog.card'
 import { getBlogsByTag } from '@/services/tag.service'
-import { ParamsIdAndSlugProps } from '@/types'
 import { Dot, Home } from 'lucide-react'
 import Link from 'next/link'
 
-export async function generateMetadata({ params: { slug } }: ParamsIdAndSlugProps) {
+export async function generateMetadata({ params: { slug } }: { params: { slug: string } }) {
   const { label } = await getBlogsByTag(slug)
   return { title: label }
 }
 
-export default async function Page({ params: { slug } }: ParamsIdAndSlugProps) {
+export default async function Page({ params: { slug } }: { params: { slug: string } }) {
   const { label, blogs } = await getBlogsByTag(slug)
 
   return (
