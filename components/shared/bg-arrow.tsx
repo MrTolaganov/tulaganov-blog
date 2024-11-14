@@ -1,7 +1,7 @@
 export default function BgArrow() {
   return (
     <svg
-      className='wave'
+      className='wave max-md:w-[100vw]'
       width='650'
       viewBox='0 0 484 120'
       fill='none'
