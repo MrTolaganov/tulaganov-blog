@@ -3,12 +3,24 @@ import { getBlogsByTag } from '@/services/tag.service'
 import { Dot, Home } from 'lucide-react'
 import Link from 'next/link'
 
-export async function generateMetadata({ params: { slug } }: { params: { slug: string } }) {
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
+
+  const {
+    slug
+  } = params;
+
   const { label } = await getBlogsByTag(slug)
   return { title: label }
 }
 
-export default async function Page({ params: { slug } }: { params: { slug: string } }) {
+export default async function Page(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
+
+  const {
+    slug
+  } = params;
+
   const { label, blogs } = await getBlogsByTag(slug)
 
   return (

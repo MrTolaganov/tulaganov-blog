@@ -4,10 +4,6 @@ export interface ChildProps {
   children: ReactNode
 }
 
-export interface ParamsIdAndSlugProps {
-  params: { id: string; slug: string }
-}
-
 export interface IAuthor {
   id: string
   name: string

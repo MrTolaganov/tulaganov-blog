@@ -7,12 +7,24 @@ import { getReadingTime } from '@/lib/utils'
 import { format } from 'date-fns'
 import ShareBtns from '../../components/share-btns'
 
-export async function generateMetadata({ params: { slug } }: { params: { slug: string } }) {
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
+
+  const {
+    slug
+  } = params;
+
   const { title, description, image } = await getDetailedBlog(slug)
   return { title, description, openGraph: { title, description, images: image.url } }
 }
 
-export default async function Page({ params: { slug } }: { params: { slug: string } }) {
+export default async function Page(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
+
+  const {
+    slug
+  } = params;
+
   const blog = await getDetailedBlog(slug)
 
   const { title, description, image, content, author, createdAt } = blog

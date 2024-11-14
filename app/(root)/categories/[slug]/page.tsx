@@ -3,12 +3,24 @@ import { getBlogsByCategory } from '@/services/category.service'
 import { Dot, Home } from 'lucide-react'
 import Link from 'next/link'
 
-export async function generateMetadata({ params: { slug } }: { params: { slug: string } }) {
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
+
+  const {
+    slug
+  } = params;
+
   const { label } = await getBlogsByCategory(slug)
   return { title: label }
 }
 
-export default async function Page({ params: { slug } }: { params: { slug: string } }) {
+export default async function Page(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
+
+  const {
+    slug
+  } = params;
+
   const { label, blogs } = await getBlogsByCategory(slug)
 
   return (
